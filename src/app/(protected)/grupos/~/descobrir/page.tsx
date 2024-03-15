@@ -1,65 +1,15 @@
 import { GroupCard } from "@/components/group-card";
+import { getDiscoverGroups } from "@/server/mock";
 import { JoinGroupButton } from "../../_components/join-group-button";
 
-const groups = [
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-];
+async function DiscoverGroupsPage() {
+  const groups = await getDiscoverGroups();
 
-function DiscoverGroupsPage() {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {groups.map((group) => (
         <GroupCard
-          footer={<JoinGroupButton />}
+          footer={<JoinGroupButton group={group} />}
           name={group.name}
           key={group.name}
           picture={group.picture}

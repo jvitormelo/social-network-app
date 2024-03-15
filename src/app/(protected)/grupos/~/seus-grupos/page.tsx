@@ -1,25 +1,10 @@
 import { GroupCard } from "@/components/group-card";
 import { LeaveGroupButton } from "../../_components/leave-group-button";
+import { getUserGroups } from "@/server/mock";
 
-const groups = [
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-  {
-    name: "Group Name",
-    picture: "/placeholder.svg",
-    members: 200,
-  },
-];
+async function UserGroupsPage() {
+  const groups = await getUserGroups();
 
-function UserGroupsPage() {
   return (
     <div className="grid gap-4 md:grid-cols-3">
       {groups.map((group) => (
