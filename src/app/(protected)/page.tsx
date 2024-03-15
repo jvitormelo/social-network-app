@@ -6,7 +6,7 @@ import { BaseHeader } from "@/components/base-header";
 import { PostCard } from "@/components/post/card";
 
 import { Button } from "@/components/ui/button";
-import { getPosts } from "@/server/mock";
+import { api } from "@/trpc/server";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -27,7 +27,7 @@ function FeedPage() {
 }
 
 async function Posts() {
-  const posts = await getPosts();
+  const posts = await api.post.feed.query();
 
   return (
     <div className="rounded-lg border border-gray-200">

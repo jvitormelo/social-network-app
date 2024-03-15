@@ -9,12 +9,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { getPosts } from "@/server/mock";
+import { api } from "@/trpc/server";
 
 import { EllipsisVertical } from "lucide-react";
 import { Suspense } from "react";
 
-function GroupFeed() {
+function GroupFeed({ params }: { params: { id: string } }) {
   return (
     <>
       <section className="sticky top-[68px] bg-background">
@@ -47,14 +47,14 @@ function GroupFeed() {
       </div>
 
       <Suspense fallback={"Carregando..."}>
-        <Posts />
+        <Posts groupId={params.id} />
       </Suspense>
     </>
   );
 }
 
-async function Posts() {
-  const posts = await getPosts();
+async function Posts({ groupId }: { groupId: string }) {
+  const posts = await api.post.list.query({ groupId });
 
   return (
     <div className="rounded-lg border border-gray-200">

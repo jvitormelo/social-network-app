@@ -3,7 +3,8 @@ import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { getComments, getPost } from "@/server/mock";
+import { getComments } from "@/server/mock";
+import { api } from "@/trpc/server";
 import { Suspense } from "react";
 
 // Ta tudo em SSR, mas sinceramente acho que não precisa
@@ -25,7 +26,7 @@ function PostPage({ params }: { params: { id: string } }) {
 }
 
 async function Content({ postId }: { postId: string }) {
-  const post = await getPost(postId);
+  const post = await api.post.find.query(postId);
 
   return (
     <>

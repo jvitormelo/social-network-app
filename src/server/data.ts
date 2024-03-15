@@ -1,10 +1,7 @@
-"use server";
-
-import { sleep } from "@/lib/utils";
-import { type User, type Group, type Post } from "@/types";
+import { type Group, type Post, type User } from "@/types";
 
 const group = {
-  id: "1",
+  id: "991",
   name: "JASONNN",
   picture: "/placeholder.svg",
   members: 200,
@@ -12,7 +9,7 @@ const group = {
 
 const discoverGroups: Group[] = [
   {
-    id: "199",
+    id: "1",
     name: "Kekw",
     picture: "/placeholder.svg",
     members: 200,
@@ -101,51 +98,11 @@ const comments = [
   },
 ];
 
-export async function getDiscoverGroups() {
-  await sleep(1000);
-
-  return discoverGroups;
-}
-
-export async function getUserGroups() {
-  await sleep(1000);
-
-  return userGroups;
-}
-
-export async function addGroup(formData: FormData) {
-  const name = formData.get("name");
-
-  if (typeof name !== "string") {
-    throw new Error("Invalid name");
-  }
-  await sleep(1000);
-  const newGroup = {
-    id: Date.now().toString(),
-    name,
-    picture: "/placeholder.svg",
-    members: Math.floor(Math.random() * 100) + 1,
-  };
-
-  discoverGroups.push(newGroup);
-
-  return newGroup;
-}
-
-export async function joinGroup(groupId: string) {
-  await sleep(1000);
-  const foundIndex = discoverGroups.findIndex((group) => group.id === groupId);
-
-  if (foundIndex === -1) {
-    throw new Error("Group not found");
-  }
-
-  const splicedGroup = discoverGroups.splice(foundIndex, 1);
-  userGroups.push(...splicedGroup);
-}
-
-export async function getComments(postId: string) {
-  await sleep(500);
-
-  return comments;
-}
+export const mockedData = {
+  group,
+  discoverGroups,
+  userGroups,
+  user,
+  posts,
+  comments,
+};
