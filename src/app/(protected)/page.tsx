@@ -7,13 +7,16 @@ import { PostCard } from "@/components/post/card";
 
 import { Button } from "@/components/ui/button";
 import { getPosts } from "@/server/mock";
+import Link from "next/link";
 import { Suspense } from "react";
 
 function FeedPage() {
   return (
     <>
       <BaseHeader hideBack title="Feed">
-        <Button size="lg">Nova Postagem</Button>
+        <Link href={"/posts/novo"}>
+          <Button>Nova Postagem</Button>
+        </Link>
       </BaseHeader>
 
       <Suspense fallback={"Carregando..."}>
