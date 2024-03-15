@@ -1,11 +1,12 @@
 import { SearchCommand } from "@/components/search-command";
 import { ModeToggle } from "@/components/theme-toggle";
 import { Avatar } from "@/components/ui/avatar";
+import { UserGroupColapse } from "@/components/user-groups-collapse";
 import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
-  { href: "/grupos/~/descobrir", label: "Grupos", icon: UsersIcon },
+  <UserGroupColapse key={"groups"} />,
   { href: "/perfil", label: "Perfil", icon: UserIcon },
 ];
 
@@ -35,16 +36,20 @@ function AppLayout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <nav className="grid gap-1.5">
-            {navLinks.map((link) => (
-              <Link
-                className="flex items-center gap-2 rounded-md p-3 text-sm font-medium leading-none hover:bg-gray-100 dark:hover:bg-gray-800"
-                href={link.href}
-                key={link.href}
-              >
-                <link.icon className="h-4 w-4" />
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              "label" in link ? (
+                <Link
+                  className="flex items-center gap-2 rounded-md p-3 text-sm font-medium leading-none hover:bg-gray-100 dark:hover:bg-gray-800"
+                  href={link.href}
+                  key={link.href}
+                >
+                  <link.icon className="h-4 w-4" />
+                  {link.label}
+                </Link>
+              ) : (
+                link
+              ),
+            )}
           </nav>
         </aside>
         <main className="grid min-h-[90vh] w-full gap-6 md:col-span-9">
