@@ -1,7 +1,6 @@
 "use client";
 
 import { api } from "@/trpc/react";
-import { futimesSync } from "fs";
 import { ChevronDown, ChevronUp, UsersIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,7 +16,7 @@ export function UserGroupColapse() {
         className="flex items-center gap-2 rounded-md p-3 text-sm font-medium leading-none hover:bg-gray-100 dark:hover:bg-gray-800"
       >
         <UsersIcon className="h-4 w-4" />
-        Grupos Atalho
+        Grupos
         <div className="ml-auto flex">
           {isOpen ? <ChevronUp></ChevronUp> : <ChevronDown></ChevronDown>}
         </div>
