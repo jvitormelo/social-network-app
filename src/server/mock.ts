@@ -74,3 +74,34 @@ export async function joinGroup(groupId: string) {
   const splicedGroup = discoverGroups.splice(foundIndex, 1);
   userGroups.push(...splicedGroup);
 }
+
+export async function getPosts() {
+  await sleep(500);
+
+  return [
+    {
+      id: "1",
+      name: "Tracy Howard",
+      username: "tracy123",
+      postText:
+        "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+      imgSrc: "/placeholder.svg",
+    },
+    {
+      id: "2",
+      name: "Kelly Thompson",
+      username: "kellyt",
+      postText:
+        "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+      imgSrc: "/placeholder.svg",
+    },
+    {
+      id: "3",
+      name: "Chris Parker",
+      username: "thechris",
+      postText:
+        "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
+      imgSrc: "/placeholder.svg",
+    },
+  ];
+}

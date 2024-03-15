@@ -42,7 +42,7 @@ export const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
       <div className="mx-auto flex items-center gap-4">
-        <Link href={`/post/${id}`}>
+        <Link href={`/posts/${id}`}>
           <Button size="sm" variant="outline">
             Comment
             <TextIcon className="ml-1 h-4 w-4" />

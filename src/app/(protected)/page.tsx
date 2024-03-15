@@ -5,6 +5,8 @@
 import { BaseHeader } from "@/components/base-header";
 import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
+import { getPosts } from "@/server/mock";
+import { Suspense } from "react";
 
 function FeedPage() {
   return (
@@ -13,47 +15,30 @@ function FeedPage() {
         <Button size="lg">Nova Postagem</Button>
       </BaseHeader>
 
-      <div className="rounded-lg border border-gray-200">
-        {posts.map((post) => (
-          <PostCard
-            key={post.id}
-            id={post.id}
-            name={post.name}
-            username={post.username}
-            postText={post.postText}
-            imgSrc={post.imgSrc}
-          />
-        ))}
-      </div>
+      <Suspense fallback={"Carregando..."}>
+        <Posts />
+      </Suspense>
     </>
   );
 }
 
-const posts = [
-  {
-    id: "1",
-    name: "Tracy Howard",
-    username: "tracy123",
-    postText:
-      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-    imgSrc: "/placeholder.svg",
-  },
-  {
-    id: "2",
-    name: "Kelly Thompson",
-    username: "kellyt",
-    postText:
-      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-    imgSrc: "/placeholder.svg",
-  },
-  {
-    id: "3",
-    name: "Chris Parker",
-    username: "thechris",
-    postText:
-      "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
-    imgSrc: "/placeholder.svg",
-  },
-];
+async function Posts() {
+  const posts = await getPosts();
+
+  return (
+    <div className="rounded-lg border border-gray-200">
+      {posts.map((post) => (
+        <PostCard
+          key={post.id}
+          id={post.id}
+          name={post.name}
+          username={post.username}
+          postText={post.postText}
+          imgSrc={post.imgSrc}
+        />
+      ))}
+    </div>
+  );
+}
 
 export default FeedPage;
