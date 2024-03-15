@@ -11,16 +11,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { getUserGroups } from "@/server/mock";
+import { api } from "@/trpc/react";
 import { type Post } from "@/types";
-import { useQuery } from "@tanstack/react-query";
 
 type Props = {
   initialData?: Post;
 };
 
 export function PostForm({ initialData }: Props) {
-  const userGroupsQuery = useUserGroups();
+  const userGroupsQuery = api.groups.listUserGroups.useQuery();
 
   return (
     <form className="flex flex-col gap-4">
@@ -65,10 +64,3 @@ export function PostForm({ initialData }: Props) {
     </form>
   );
 }
-
-const useUserGroups = () => {
-  return useQuery({
-    queryKey: ["userGroups"],
-    queryFn: getUserGroups,
-  });
-};

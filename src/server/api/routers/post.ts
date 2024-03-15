@@ -72,4 +72,9 @@ export const postRouter = createTRPCRouter({
 
     return true;
   }),
+
+  listComments: protectedProcedure.input(z.string()).query(async () => {
+    await sleep(500);
+    return mockedData.comments;
+  }),
 });

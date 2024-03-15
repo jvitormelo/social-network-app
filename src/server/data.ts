@@ -99,7 +99,6 @@ const comments = [
 ];
 
 export const mockedData = {
-  group,
   discoverGroups,
   userGroups,
   user,

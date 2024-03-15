@@ -3,7 +3,6 @@ import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { getComments } from "@/server/mock";
 import { api } from "@/trpc/server";
 import { Suspense } from "react";
 
@@ -30,16 +29,15 @@ async function Content({ postId }: { postId: string }) {
 
   return (
     <>
-      <BaseHeader
-        title={<PostInfo.Header post={post} user={post.user} />}
-      ></BaseHeader>
+      <BaseHeader title={<PostInfo.Header post={post} user={post.user} />} />
       <PostInfo.Content post={post} />
     </>
   );
 }
 
 async function Comments({ postId }: { postId: string }) {
-  const comments = await getComments(postId);
+  const comments = await api.post.listComments.query(postId);
+
   return (
     <div className="space-y-4">
       {comments.map((comment) => (

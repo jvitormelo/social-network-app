@@ -1,9 +1,9 @@
 import { GroupCard } from "@/components/group-card";
+import { api } from "@/trpc/server";
 import { LeaveGroupButton } from "../../_components/leave-group-button";
-import { getUserGroups } from "@/server/mock";
 
 async function UserGroupsPage() {
-  const groups = await getUserGroups();
+  const groups = await api.groups.listUserGroups.query();
 
   return (
     <div className="grid gap-4 md:grid-cols-3">

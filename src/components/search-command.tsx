@@ -12,6 +12,8 @@ import {
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { Input } from "./ui/input";
+import { api } from "@/trpc/react";
+import { useRouter } from "next/navigation";
 
 export function SearchCommand() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,11 +33,7 @@ export function SearchCommand() {
         <CommandInput placeholder="Procure algo" />
         <CommandList>
           <CommandEmpty>Nada encontrado..</CommandEmpty>
-          <CommandGroup heading="Seus grupos">
-            <CommandItem>Kekchan</CommandItem>
-            <CommandItem>MarinLovers</CommandItem>
-            <CommandItem>Viciados em Tarkov</CommandItem>
-          </CommandGroup>
+          <UserGroups />
           <CommandSeparator />
           <CommandGroup heading="Sugestões">
             <CommandItem>Feed</CommandItem>
@@ -47,5 +45,27 @@ export function SearchCommand() {
         </CommandList>
       </CommandDialog>
     </>
+  );
+}
+
+function UserGroups() {
+  const userGroupsQuery = api.groups.listUserGroups.useQuery();
+  const router = useRouter();
+  if (userGroupsQuery.isLoading) {
+    return <CommandItem>Carregando...</CommandItem>;
+  }
+  return (
+    <CommandGroup heading="Seus grupos">
+      {userGroupsQuery.data?.map((group) => (
+        <CommandItem
+          onSelect={() => {
+            router.push(`/grupos/${group.id}`);
+          }}
+          key={group.id}
+        >
+          {group.name}
+        </CommandItem>
+      ))}
+    </CommandGroup>
   );
 }

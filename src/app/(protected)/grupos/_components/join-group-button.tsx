@@ -1,14 +1,20 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { openToast } from "@/lib/utils";
-import { joinGroup } from "@/server/mock";
+import { api } from "@/trpc/react";
 import { type Group } from "@/types";
-import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function JoinGroupButton({ group }: { group: Group }) {
-  const { mutate, isLoading } = useJoinGroup();
+  const router = useRouter();
+  const { mutate, isLoading } = api.groups.join.useMutation({
+    onSuccess() {
+      toast.success("Voce entrou no grupo!");
+
+      router.refresh();
+    },
+  });
 
   return (
     <Button
@@ -23,19 +29,4 @@ export function JoinGroupButton({ group }: { group: Group }) {
       Entrar
     </Button>
   );
-}
-
-function useJoinGroup() {
-  const router = useRouter();
-  return useMutation({
-    mutationFn: async (groupId: string) => {
-      await joinGroup(groupId);
-      return true;
-    },
-    onSuccess() {
-      openToast("Voce entrou no grupo!");
-
-      router.refresh();
-    },
-  });
 }

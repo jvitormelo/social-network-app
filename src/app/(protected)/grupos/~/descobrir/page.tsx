@@ -1,10 +1,10 @@
 import { GroupCard } from "@/components/group-card";
-import { getDiscoverGroups } from "@/server/mock";
-import { JoinGroupButton } from "../../_components/join-group-button";
+import { api } from "@/trpc/server";
 import Link from "next/link";
+import { JoinGroupButton } from "../../_components/join-group-button";
 
 async function DiscoverGroupsPage() {
-  const groups = await getDiscoverGroups();
+  const groups = await api.groups.discoverGroups.query();
 
   return (
     <div className="grid gap-4 md:grid-cols-3">

@@ -17,23 +17,9 @@ import { Suspense } from "react";
 function GroupFeed({ params }: { params: { id: string } }) {
   return (
     <>
-      <section className="sticky top-[68px] bg-background">
-        <BaseHeader title="Nome do grupo">
-          <Button size={"sm"}>Novo Post</Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <EllipsisVertical />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem>Editar</DropdownMenuItem>
-              <DropdownMenuItem className="text-red-500">
-                Excluir
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </BaseHeader>
-      </section>
-
+      <Suspense>
+        <Header groupId={params.id} />
+      </Suspense>
       <div className="flex justify-center">
         <Tabs defaultValue={"feed"}>
           <TabsList>
@@ -50,6 +36,29 @@ function GroupFeed({ params }: { params: { id: string } }) {
         <Posts groupId={params.id} />
       </Suspense>
     </>
+  );
+}
+
+async function Header({ groupId: groupId }: { groupId: string }) {
+  const group = await api.groups.find.query(groupId);
+
+  return (
+    <section className="sticky top-[68px] bg-background">
+      <BaseHeader title={group.name}>
+        <Button size={"sm"}>Novo Post</Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <EllipsisVertical />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem>Editar</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-500">
+              Excluir
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </BaseHeader>
+    </section>
   );
 }
 
