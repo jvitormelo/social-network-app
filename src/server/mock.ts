@@ -44,6 +44,25 @@ export async function getUserGroups() {
   return userGroups;
 }
 
+export async function addGroup(formData: FormData) {
+  const name = formData.get("name");
+
+  if (typeof name !== "string") {
+    throw new Error("Invalid name");
+  }
+  await sleep(1000);
+  const newGroup = {
+    id: Date.now().toString(),
+    name,
+    picture: "/placeholder.svg",
+    members: Math.floor(Math.random() * 100) + 1,
+  };
+
+  discoverGroups.push(newGroup);
+
+  return newGroup;
+}
+
 export async function joinGroup(groupId: string) {
   await sleep(1000);
   const foundIndex = discoverGroups.findIndex((group) => group.id === groupId);
