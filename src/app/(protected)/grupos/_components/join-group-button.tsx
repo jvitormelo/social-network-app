@@ -13,7 +13,10 @@ export function JoinGroupButton({ group }: { group: Group }) {
   return (
     <Button
       isLoading={isLoading}
-      onClick={() => mutate(group.id)}
+      onClick={(e) => {
+        e.stopPropagation();
+        mutate(group.id);
+      }}
       className="invisible w-full opacity-0 transition-opacity duration-200 ease-in-out group-hover:visible group-hover:opacity-100"
     >
       Entrar
