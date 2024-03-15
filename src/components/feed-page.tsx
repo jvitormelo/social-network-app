@@ -7,129 +7,34 @@ import { Button } from "@/components/ui/button";
 
 export function FeedPage() {
   return (
-    <div className="grid gap-6 md:col-span-9">
+    <div className="space-y-6">
       <div className="flex items-center gap-4">
-        <Avatar className="h-16 w-16" />
         <h1 className="text-3xl font-bold">Feed</h1>
         <div className="ml-auto flex items-center gap-2">
-          <Button className="h-8" size="sm" variant="outline">
+          <Button size="lg" variant="outline">
             Create Post
           </Button>
         </div>
       </div>
       <div className="rounded-lg border border-gray-200">
-        <div className="grid gap-2 border-b p-4">
-          <div className="flex items-center gap-2">
-            <Avatar className="h-8 w-8" />
-            <div className="flex items-center gap-1">
-              <h2 className="text-sm font-medium leading-none">Tracy Howard</h2>
-              <h3 className="text-sm font-medium leading-none text-gray-500">
-                @tracy123
-              </h3>
-            </div>
-          </div>
-          <div className="grid gap-2">
-            <p className="text-base leading-[1.6]">
-              Excited to announce the launch of our new app! It's been a long
-              journey, but we're finally here. Big thanks to the team. #app
-              #launch 🚀
-            </p>
-            <img
-              alt="Post image"
-              className="rounded-xl object-cover"
-              height="200"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/200",
-                objectFit: "cover",
-              }}
-              width="400"
-            />
-          </div>
-          <div className="flex items-center gap-4">
-            <Button size="sm" variant="outline">
-              Comment
-            </Button>
-            <Button size="sm" variant="outline">
-              Share
-            </Button>
-          </div>
-        </div>
-        <div className="grid gap-2 border-b p-4">
-          <div className="flex items-center gap-2">
-            <Avatar className="h-8 w-8" />
-            <div className="flex items-center gap-1">
-              <h2 className="text-sm font-medium leading-none">
-                Kelly Thompson
-              </h2>
-              <h3 className="text-sm font-medium leading-none text-gray-500">
-                @kellyt
-              </h3>
-            </div>
-          </div>
-          <div className="grid gap-2">
-            <p className="text-base leading-[1.6]">
-              Just finished reading the latest book by @author123. What a
-              journey! Highly recommended for all the book lovers out there.
-              📚❤️
-            </p>
-            <img
-              alt="Post image"
-              className="rounded-xl object-cover"
-              height="200"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/200",
-                objectFit: "cover",
-              }}
-              width="400"
-            />
-          </div>
-          <div className="flex items-center gap-4">
-            <Button size="sm" variant="outline">
-              Comment
-            </Button>
-            <Button size="sm" variant="outline">
-              Share
-            </Button>
-          </div>
-        </div>
-        <div className="grid gap-2 p-4">
-          <div className="flex items-center gap-2">
-            <Avatar className="h-8 w-8" />
-            <div className="flex items-center gap-1">
-              <h2 className="text-sm font-medium leading-none">Chris Parker</h2>
-              <h3 className="text-sm font-medium leading-none text-gray-500">
-                @thechris
-              </h3>
-            </div>
-          </div>
-          <div className="grid gap-2">
-            <p className="text-base leading-[1.6]">
-              Just wanted to share this amazing recipe I tried last night.
-              It&apos;s a delicious spaghetti aglio e olio. 😋🍝
-            </p>
-            <img
-              alt="Post image"
-              className="rounded-xl object-cover"
-              height="200"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/200",
-                objectFit: "cover",
-              }}
-              width="400"
-            />
-          </div>
-          <div className="flex items-center gap-4">
-            <Button size="sm" variant="outline">
-              Comment
-            </Button>
-            <Button size="sm" variant="outline">
-              Share
-            </Button>
-          </div>
-        </div>
+        <PostCard
+          name="Tracy Howard"
+          username="tracy123"
+          postText="Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️"
+          imgSrc="/placeholder.svg"
+        />
+        <PostCard
+          name="Kelly Thompson"
+          username="kellyt"
+          postText="Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️"
+          imgSrc="/placeholder.svg"
+        />
+        <PostCard
+          name="Chris Parker"
+          username="thechris"
+          postText="Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝"
+          imgSrc="/placeholder.svg"
+        />
       </div>
     </div>
   );
@@ -151,7 +56,7 @@ const PostCard: React.FC<PostCardProps> = ({
   return (
     <div className="grid gap-2 border-b p-4">
       <div className="flex items-center gap-2">
-        <Avatar className="h-8 w-8" />
+        <Avatar />
         <div className="flex items-center gap-1">
           <h2 className="text-sm font-medium leading-none">{name}</h2>
           <h3 className="text-sm font-medium leading-none text-gray-500">
@@ -159,11 +64,11 @@ const PostCard: React.FC<PostCardProps> = ({
           </h3>
         </div>
       </div>
-      <div className="grid gap-2">
+      <div className="grid items-center">
         <p className="text-base leading-[1.6]">{postText}</p>
         <img
           alt="Post image"
-          className="rounded-xl object-cover"
+          className="mx-auto my-4 rounded-xl object-cover"
           height="200"
           src={imgSrc}
           style={{
@@ -173,12 +78,14 @@ const PostCard: React.FC<PostCardProps> = ({
           width="400"
         />
       </div>
-      <div className="flex items-center gap-4">
+      <div className="mx-auto flex items-center gap-4">
         <Button size="sm" variant="outline">
           Comment
+          <TextIcon className="ml-1 h-4 w-4" />
         </Button>
         <Button size="sm" variant="outline">
           Share
+          <ShareIcon className="ml-1 h-4 w-4" />
         </Button>
       </div>
     </div>
@@ -186,3 +93,47 @@ const PostCard: React.FC<PostCardProps> = ({
 };
 
 export default PostCard;
+
+type IconProps = React.ComponentProps<"svg">;
+
+function TextIcon(props: IconProps) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M17 6.1H3" />
+      <path d="M21 12.1H3" />
+      <path d="M15.1 18H3" />
+    </svg>
+  );
+}
+
+function ShareIcon(props: IconProps) {
+  return (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+      <polyline points="16 6 12 2 8 6" />
+      <line x1="12" x2="12" y1="2" y2="15" />
+    </svg>
+  );
+}

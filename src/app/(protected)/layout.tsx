@@ -1,11 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
-  { href: "#", label: "Groups", icon: UsersIcon },
-  { href: "#", label: "Profile", icon: UserIcon },
+  { href: "/grupos", label: "Groups", icon: UsersIcon },
+  { href: "/perfil", label: "Profile", icon: UserIcon },
   //   { href: "#", label: "Messages", icon: MessageSquareIcon },
   //   { href: "#", label: "Notifications", icon: BellIcon },
 ];
@@ -17,32 +17,28 @@ function DashboardLayout({
 }) {
   return (
     <div>
-      <div className="flex items-center justify-between border-b py-3 md:col-span-12 lg:px-8">
-        <div></div>
-        <div className="flex items-center gap-4">
-          <div />
-          <input
-            className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400"
-            placeholder="Search"
-            type="text"
-          />
-        </div>
-        <Avatar>
-          <AvatarImage className="h-10 w-10" />
-          <AvatarFallback className="h-10 w-10" />
-        </Avatar>
+      <div className="sticky top-0 border-b bg-white py-3">
+        <header className="z-10 mx-auto flex max-w-7xl justify-between px-6">
+          <div>LOGO</div>
+          <div className="flex items-center gap-4">
+            <div />
+            <input
+              className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400"
+              placeholder="Search"
+              type="text"
+            />
+          </div>
+          <Avatar />
+        </header>
       </div>
       <section className="mx-auto grid w-full max-w-7xl items-start gap-6 px-6 py-6 md:grid-cols-12">
         {/* Include shared UI here e.g. a header or sidebar */}
-        <div className="grid gap-4 md:col-span-3">
+        <aside className="left-0 top-24 grid gap-4 md:col-span-3 lg:sticky ">
           <div className="flex items-center gap-4">
-            <Avatar className="h-16 w-16" />
+            <Avatar />
             <div>
               <h1 className="text-2xl font-bold leading-none">Tracy Howard</h1>
               <p className="text-sm text-gray-500">@tracy123</p>
-              <Button className="mt-2 h-8" size="sm" variant="outline">
-                Add friend
-              </Button>
             </div>
           </div>
           <nav className="grid gap-1.5">
@@ -57,8 +53,8 @@ function DashboardLayout({
               </Link>
             ))}
           </nav>
-        </div>
-        {children}
+        </aside>
+        <main className="grid w-full gap-6 md:col-span-9">{children}</main>
       </section>
     </div>
   );
