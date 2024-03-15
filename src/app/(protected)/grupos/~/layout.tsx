@@ -1,25 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { type PropsWithChildren } from "react";
-import { GroupsTabs } from "./_components/groups-tabs";
+import { GroupsTabs } from "../_components/groups-tabs";
+import Link from "next/link";
+import { BaseHeader } from "@/components/base-header";
 
 function GroupsLayout(props: PropsWithChildren) {
   return (
-    <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <h1 className="text-3xl font-bold">Groups</h1>
-        <div className="ml-auto flex items-center gap-2">
+    <>
+      <BaseHeader title="Grupos">
+        <Link href={"/grupos/novo"}>
           <Button size="lg" variant="outline">
-            Create Group
+            Novo Grupo
           </Button>
-        </div>
-      </div>
+        </Link>
+      </BaseHeader>
 
       <div className="flex w-full justify-center">
         <GroupsTabs />
       </div>
 
       {props.children}
-    </div>
+    </>
   );
 }
 

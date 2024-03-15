@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
-  { href: "/grupos/descobrir", label: "Grupos", icon: UsersIcon },
+  { href: "/grupos/~/descobrir", label: "Grupos", icon: UsersIcon },
   { href: "/perfil", label: "Perfil", icon: UserIcon },
   //   { href: "#", label: "Messages", icon: MessageSquareIcon },
   //   { href: "#", label: "Notifications", icon: BellIcon },
@@ -50,7 +50,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
           </nav>
         </aside>
         <main className="grid min-h-[90vh] w-full gap-6 md:col-span-9">
-          {children}
+          <div className="space-y-6">{children}</div>
         </main>
       </section>
     </div>

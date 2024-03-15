@@ -1,8 +1,10 @@
+import { BaseHeader } from "@/components/base-header";
+
 function PerfilPage() {
   return (
-    <div>
-      <h1>Perfil</h1>
-    </div>
+    <>
+      <BaseHeader title="Perfil"></BaseHeader>
+    </>
   );
 }
 

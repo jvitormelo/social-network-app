@@ -1,5 +1,5 @@
 import { GroupCard } from "@/components/group-card";
-import { LeaveGroupButton } from "../_components/leave-group-button";
+import { LeaveGroupButton } from "../../_components/leave-group-button";
 
 const groups = [
   {

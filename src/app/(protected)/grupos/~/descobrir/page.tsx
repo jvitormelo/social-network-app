@@ -1,5 +1,5 @@
 import { GroupCard } from "@/components/group-card";
-import { JoinGroupButton } from "../_components/join-group-button";
+import { JoinGroupButton } from "../../_components/join-group-button";
 
 const groups = [
   {

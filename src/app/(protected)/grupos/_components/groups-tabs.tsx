@@ -11,10 +11,10 @@ export function GroupsTabs() {
   return (
     <Tabs defaultValue={isDiscover ? "discover" : "your-groups"}>
       <TabsList>
-        <Link href={"/grupos/descobrir"}>
+        <Link href={"/grupos/~/descobrir"}>
           <TabsTrigger value="discover">Descobrir</TabsTrigger>
         </Link>
-        <Link href={"/grupos/seus-grupos"}>
+        <Link href={"/grupos/~/seus-grupos"}>
           <TabsTrigger value="your-groups">Seus Grupos</TabsTrigger>
         </Link>
       </TabsList>
