@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { Avatar } from "./ui/avatar";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 interface PostCardProps {
+  id: string;
   name: string;
   username: string;
   postText: string;
@@ -10,6 +12,7 @@ interface PostCardProps {
 }
 
 export const PostCard: React.FC<PostCardProps> = ({
+  id,
   name,
   username,
   postText,
@@ -39,10 +42,12 @@ export const PostCard: React.FC<PostCardProps> = ({
         </div>
       </div>
       <div className="mx-auto flex items-center gap-4">
-        <Button size="sm" variant="outline">
-          Comment
-          <TextIcon className="ml-1 h-4 w-4" />
-        </Button>
+        <Link href={`/post/${id}`}>
+          <Button size="sm" variant="outline">
+            Comment
+            <TextIcon className="ml-1 h-4 w-4" />
+          </Button>
+        </Link>
         <Button size="sm" variant="outline">
           Share
           <ShareIcon className="ml-1 h-4 w-4" />

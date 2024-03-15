@@ -17,6 +17,7 @@ function FeedPage() {
         {posts.map((post) => (
           <PostCard
             key={post.id}
+            id={post.id}
             name={post.name}
             username={post.username}
             postText={post.postText}
