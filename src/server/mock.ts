@@ -1,7 +1,7 @@
 "use server";
 
 import { sleep } from "@/lib/utils";
-import { type Group } from "@/types";
+import { type User, type Group, type Post } from "@/types";
 
 const discoverGroups: Group[] = [
   {
@@ -31,6 +31,36 @@ const discoverGroups: Group[] = [
 ];
 
 const userGroups: Group[] = [];
+
+const user: User = {
+  id: "1",
+  name: "Tracy Howard",
+  picture: "/placeholder.svg",
+};
+
+const posts: Post[] = [
+  {
+    id: "1",
+    user,
+    content:
+      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+    imgSrc: "/placeholder.svg",
+  },
+  {
+    id: "2",
+    user,
+    content:
+      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+    imgSrc: "/placeholder.svg",
+  },
+  {
+    id: "3",
+    user,
+    content:
+      "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
+    imgSrc: "/placeholder.svg",
+  },
+];
 
 export async function getDiscoverGroups() {
   await sleep(1000);
@@ -78,30 +108,16 @@ export async function joinGroup(groupId: string) {
 export async function getPosts() {
   await sleep(500);
 
-  return [
-    {
-      id: "1",
-      name: "Tracy Howard",
-      username: "tracy123",
-      postText:
-        "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-      imgSrc: "/placeholder.svg",
-    },
-    {
-      id: "2",
-      name: "Kelly Thompson",
-      username: "kellyt",
-      postText:
-        "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-      imgSrc: "/placeholder.svg",
-    },
-    {
-      id: "3",
-      name: "Chris Parker",
-      username: "thechris",
-      postText:
-        "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
-      imgSrc: "/placeholder.svg",
-    },
-  ];
+  return posts;
+}
+
+export async function getPost(postId: string) {
+  await sleep(500);
+  const post = posts.find((post) => post.id === postId);
+
+  if (!post) {
+    throw new Error("Post not found");
+  }
+
+  return post;
 }

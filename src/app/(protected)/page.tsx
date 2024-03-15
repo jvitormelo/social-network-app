@@ -11,7 +11,7 @@ import { Suspense } from "react";
 function FeedPage() {
   return (
     <>
-      <BaseHeader title="Feed">
+      <BaseHeader hideBack title="Feed">
         <Button size="lg">Nova Postagem</Button>
       </BaseHeader>
 
@@ -28,14 +28,7 @@ async function Posts() {
   return (
     <div className="rounded-lg border border-gray-200">
       {posts.map((post) => (
-        <PostCard
-          key={post.id}
-          id={post.id}
-          name={post.name}
-          username={post.username}
-          postText={post.postText}
-          imgSrc={post.imgSrc}
-        />
+        <PostCard key={post.id} post={post} />
       ))}
     </div>
   );

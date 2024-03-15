@@ -2,47 +2,20 @@ import Image from "next/image";
 import { Avatar } from "./ui/avatar";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { type Post } from "@/types";
+import { PostInfo } from "./post/content";
 
-interface PostCardProps {
-  id: string;
-  name: string;
-  username: string;
-  postText: string;
-  imgSrc: string;
+interface Props {
+  post: Post;
 }
 
-export const PostCard: React.FC<PostCardProps> = ({
-  id,
-  name,
-  username,
-  postText,
-  imgSrc,
-}) => {
+export const PostCard: React.FC<Props> = ({ post }) => {
   return (
-    <div className="flex flex-col gap-2 border-b p-4">
-      <div className="flex items-center gap-2">
-        <Avatar />
-        <div className="flex items-center gap-1">
-          <h2 className="text-sm font-medium leading-none">{name}</h2>
-          <h3 className="text-sm font-medium leading-none text-gray-500">
-            @{username}
-          </h3>
-        </div>
-      </div>
-      <div className="flex flex-col items-center">
-        <p className="text-base leading-[1.6]">{postText}</p>
-        <div>
-          <Image
-            alt="Post image"
-            className="rounded-xl"
-            height="200"
-            src={imgSrc}
-            width="400"
-          />
-        </div>
-      </div>
+    <PostInfo.Container className="border-b">
+      <PostInfo.Header user={post.user} />
+      <PostInfo.Content post={post} />
       <div className="mx-auto flex items-center gap-4">
-        <Link href={`/posts/${id}`}>
+        <Link href={`/posts/${post.id}`}>
           <Button size="sm" variant="outline">
             Comment
             <TextIcon className="ml-1 h-4 w-4" />
@@ -53,7 +26,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           <ShareIcon className="ml-1 h-4 w-4" />
         </Button>
       </div>
-    </div>
+    </PostInfo.Container>
   );
 };
 
