@@ -12,7 +12,7 @@ function FeedPage() {
         <h1 className="text-3xl font-bold">Feed</h1>
         <div className="ml-auto flex items-center gap-2">
           <Button size="lg" variant="outline">
-            Create Post
+            Nova Postagem
           </Button>
         </div>
       </div>
