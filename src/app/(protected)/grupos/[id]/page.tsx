@@ -26,7 +26,9 @@ function GroupFeed() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem>Editar</DropdownMenuItem>
-              <DropdownMenuItem>Excluir</DropdownMenuItem>
+              <DropdownMenuItem className="text-red-500">
+                Excluir
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </BaseHeader>

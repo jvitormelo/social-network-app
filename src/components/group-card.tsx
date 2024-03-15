@@ -1,6 +1,5 @@
-import { Card, CardFooter, CardTitle } from "@/components/ui/card";
+import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
-import { Button } from "./ui/button";
 
 type Props = {
   name: string;
@@ -9,7 +8,7 @@ type Props = {
   footer: React.ReactNode;
 };
 
-export function GroupCard({ footer, members, name, picture }: Props) {
+export function GroupCard({ footer, members, name }: Props) {
   return (
     <Card className="group">
       <div className="relative" style={{ height: 150 }}>
