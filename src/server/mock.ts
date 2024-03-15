@@ -3,6 +3,13 @@
 import { sleep } from "@/lib/utils";
 import { type User, type Group, type Post } from "@/types";
 
+const group = {
+  id: "991",
+  name: "JASONNN",
+  picture: "/placeholder.svg",
+  members: 200,
+};
+
 const discoverGroups: Group[] = [
   {
     id: "1",
@@ -30,7 +37,7 @@ const discoverGroups: Group[] = [
   },
 ];
 
-const userGroups: Group[] = [];
+const userGroups: Group[] = [group];
 
 const user: User = {
   id: "1",
@@ -41,6 +48,7 @@ const user: User = {
 const posts: Post[] = [
   {
     id: "1",
+    group: group,
     user,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
@@ -50,6 +58,7 @@ const posts: Post[] = [
   {
     id: "2",
     user,
+    group: group,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
     imgSrc: "/placeholder.svg",
@@ -58,6 +67,7 @@ const posts: Post[] = [
   {
     id: "3",
     user,
+    group: group,
     content:
       "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
     imgSrc: "/placeholder.svg",

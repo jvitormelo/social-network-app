@@ -14,6 +14,7 @@ export type User = {
 export type Post = {
   id: string;
   user: User;
+  group: Group;
   content: string;
   imgSrc?: string;
   createdAt: string;
