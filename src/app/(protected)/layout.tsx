@@ -1,3 +1,5 @@
+import { SearchCommand } from "@/components/search-command";
+import { ModeToggle } from "@/components/theme-toggle";
 import { Avatar } from "@/components/ui/avatar";
 import Link from "next/link";
 
@@ -5,25 +7,21 @@ const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
   { href: "/grupos/~/descobrir", label: "Grupos", icon: UsersIcon },
   { href: "/perfil", label: "Perfil", icon: UserIcon },
-  //   { href: "#", label: "Messages", icon: MessageSquareIcon },
-  //   { href: "#", label: "Notifications", icon: BellIcon },
 ];
 
 function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <div className="sticky top-0 z-50 border-b bg-white py-3">
+      <div className="sticky top-0 z-50 border-b bg-background py-2">
         <header className="mx-auto flex max-w-7xl justify-between px-6">
           <div>LOGO</div>
-          <div className="flex items-center gap-4">
-            <div />
-            <input
-              className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring focus:ring-gray-400"
-              placeholder="Search"
-              type="text"
-            />
+
+          <SearchCommand />
+
+          <div className="flex gap-4">
+            <ModeToggle />
+            <Avatar />
           </div>
-          <Avatar />
         </header>
       </div>
       <section className="mx-auto grid w-full max-w-7xl items-start gap-6 px-6 py-6 md:grid-cols-12">

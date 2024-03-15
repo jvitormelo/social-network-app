@@ -14,7 +14,7 @@ import { EllipsisVertical } from "lucide-react";
 function GroupFeed() {
   return (
     <>
-      <section className="sticky top-[68px] bg-white">
+      <section className="sticky top-[68px] bg-background">
         <BaseHeader title="Nome do grupo">
           <Button size={"sm"}>Novo Post</Button>
           <DropdownMenu>

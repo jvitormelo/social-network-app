@@ -50,7 +50,14 @@ AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 const AvatarComponent = (props: React.ComponentProps<typeof AvatarImage>) => {
   return (
     <AvatarContext>
-      <AvatarImage {...props} className="h-10 w-10" />
+      <AvatarImage
+        src={
+          props.src ??
+          "https://cdn.discordapp.com/attachments/820471891051151371/1218258932267614338/image.png?ex=6607030b&is=65f48e0b&hm=a277ecb3e6deacb749c89d7d0fbb86b332198bfcdd075b98013fdb670b7db6a3&"
+        }
+        {...props}
+        className="h-10 w-10"
+      />
       <AvatarFallback className="h-10 w-10" />
     </AvatarContext>
   );
