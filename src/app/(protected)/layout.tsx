@@ -9,15 +9,11 @@ const navLinks = [
   //   { href: "#", label: "Notifications", icon: BellIcon },
 ];
 
-function DashboardLayout({
-  children, // will be a page or nested layout
-}: {
-  children: React.ReactNode;
-}) {
+function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <div className="sticky top-0 border-b bg-white py-3">
-        <header className="z-10 mx-auto flex max-w-7xl justify-between px-6">
+      <div className="sticky top-0 z-50 border-b bg-white py-3">
+        <header className="mx-auto flex max-w-7xl justify-between px-6">
           <div>LOGO</div>
           <div className="flex items-center gap-4">
             <div />
@@ -61,7 +57,7 @@ function DashboardLayout({
   );
 }
 
-export default DashboardLayout;
+export default AppLayout;
 
 function UserIcon(props: SvgProps) {
   return (
