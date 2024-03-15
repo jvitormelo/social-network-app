@@ -1,9 +1,8 @@
 import { BaseHeader } from "@/components/base-header";
 import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
-import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { getComments, getPost } from "@/server/mock";
 import { Suspense } from "react";
 
@@ -47,9 +46,8 @@ async function Comments({ postId }: { postId: string }) {
       ))}
 
       <form className="flex space-x-2">
-        <Input
+        <Textarea
           className="flex-1 rounded-lg border px-4 py-2"
-          type="text"
           placeholder="Escreva algo..."
         />
         <Button type="submit">Postar</Button>
