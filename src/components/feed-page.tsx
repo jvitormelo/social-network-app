@@ -4,6 +4,7 @@
  */
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export function FeedPage() {
   return (
@@ -54,7 +55,7 @@ const PostCard: React.FC<PostCardProps> = ({
   imgSrc,
 }) => {
   return (
-    <div className="grid gap-2 border-b p-4">
+    <div className="flex flex-col gap-2 border-b p-4">
       <div className="flex items-center gap-2">
         <Avatar />
         <div className="flex items-center gap-1">
@@ -64,19 +65,17 @@ const PostCard: React.FC<PostCardProps> = ({
           </h3>
         </div>
       </div>
-      <div className="grid items-center">
+      <div className="flex flex-col items-center">
         <p className="text-base leading-[1.6]">{postText}</p>
-        <img
-          alt="Post image"
-          className="mx-auto my-4 rounded-xl object-cover"
-          height="200"
-          src={imgSrc}
-          style={{
-            aspectRatio: "400/200",
-            objectFit: "cover",
-          }}
-          width="400"
-        />
+        <div>
+          <Image
+            alt="Post image"
+            className="rounded-xl"
+            height="200"
+            src={imgSrc}
+            width="400"
+          />
+        </div>
       </div>
       <div className="mx-auto flex items-center gap-4">
         <Button size="sm" variant="outline">

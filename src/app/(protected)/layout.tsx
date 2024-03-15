@@ -54,7 +54,9 @@ function DashboardLayout({
             ))}
           </nav>
         </aside>
-        <main className="grid w-full gap-6 md:col-span-9">{children}</main>
+        <main className="grid min-h-[90vh] w-full gap-6 md:col-span-9">
+          {children}
+        </main>
       </section>
     </div>
   );
