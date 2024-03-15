@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
-  { href: "/grupos", label: "Grupos", icon: UsersIcon },
+  { href: "/grupos/descobrir", label: "Grupos", icon: UsersIcon },
   { href: "/perfil", label: "Perfil", icon: UserIcon },
   //   { href: "#", label: "Messages", icon: MessageSquareIcon },
   //   { href: "#", label: "Notifications", icon: BellIcon },
