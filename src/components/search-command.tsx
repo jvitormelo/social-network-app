@@ -55,7 +55,7 @@ function UserGroups() {
     return <CommandItem>Carregando...</CommandItem>;
   }
   return (
-    <CommandGroup heading="Seus grupos">
+    <CommandGroup heading="Meus grupos">
       {userGroupsQuery.data?.map((group) => (
         <CommandItem
           onSelect={() => {

@@ -14,8 +14,8 @@ export function GroupsTabs() {
         <Link passHref href={"/grupos/~/descobrir"}>
           <TabsTrigger value="discover">Descobrir</TabsTrigger>
         </Link>
-        <Link passHref href={"/grupos/~/seus-grupos"}>
-          <TabsTrigger value="your-groups">Seus Grupos</TabsTrigger>
+        <Link passHref href={"/grupos/~/meus-grupos"}>
+          <TabsTrigger value="your-groups">Meus Grupos</TabsTrigger>
         </Link>
       </TabsList>
     </Tabs>

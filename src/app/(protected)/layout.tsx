@@ -8,7 +8,7 @@ import Link from "next/link";
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
   { href: "/grupos/~/descobrir", label: "Descobrir", icon: Compass },
-  { href: "/grupos/~/seus-grupos", label: "Meus grupos", icon: Group },
+  { href: "/grupos/~/meus-grupos", label: "Meus grupos", icon: Group },
   <UserGroupColapse key={"groups"} />,
   { href: "/perfil", label: "Perfil", icon: UserIcon },
 ];
