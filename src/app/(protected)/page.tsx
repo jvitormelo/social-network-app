@@ -15,7 +15,7 @@ function FeedPage() {
     <>
       <BaseHeader hideBack title="Feed">
         <Link href={"/posts/novo"}>
-          <Button>Nova Postagem</Button>
+          <Button>Novo Post</Button>
         </Link>
       </BaseHeader>
 

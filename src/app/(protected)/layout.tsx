@@ -2,10 +2,13 @@ import { SearchCommand } from "@/components/search-command";
 import { ModeToggle } from "@/components/theme-toggle";
 import { Avatar } from "@/components/ui/avatar";
 import { UserGroupColapse } from "@/components/user-groups-collapse";
+import { Compass, Group } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Feed", icon: HomeIcon },
+  { href: "/grupos/~/descobrir", label: "Descobrir", icon: Compass },
+  { href: "/grupos/~/seus-grupos", label: "Meus grupos", icon: Group },
   <UserGroupColapse key={"groups"} />,
   { href: "/perfil", label: "Perfil", icon: UserIcon },
 ];

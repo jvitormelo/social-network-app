@@ -9,7 +9,7 @@ export function GroupsTabs() {
 
   const isDiscover = pathName.includes("descobrir");
   return (
-    <Tabs defaultValue={isDiscover ? "discover" : "your-groups"}>
+    <Tabs key={pathName} defaultValue={isDiscover ? "discover" : "your-groups"}>
       <TabsList>
         <Link passHref href={"/grupos/~/descobrir"}>
           <TabsTrigger value="discover">Descobrir</TabsTrigger>
