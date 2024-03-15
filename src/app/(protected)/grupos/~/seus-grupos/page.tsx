@@ -1,13 +1,24 @@
-import { GroupCard } from "@/components/group-card";
-import { api } from "@/trpc/server";
-import { LeaveGroupButton } from "../../_components/leave-group-button";
+"use client";
 
-async function UserGroupsPage() {
-  const groups = await api.groups.listUserGroups.query();
+import { GroupCard } from "@/components/group-card";
+
+import { LeaveGroupButton } from "../../_components/leave-group-button";
+import { api } from "@/trpc/react";
+import { SkeletonCard } from "@/components/skeleton-card";
+
+function UserGroupsPage() {
+  const groupsQuery = api.groups.listUserGroups.useQuery();
 
   return (
     <div className="grid gap-4 md:grid-cols-3">
-      {groups.map((group) => (
+      {groupsQuery.isLoading && (
+        <>
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </>
+      )}
+      {groupsQuery.data?.map((group) => (
         <GroupCard
           footer={<LeaveGroupButton />}
           name={group.name}

@@ -3,10 +3,10 @@
  * @see https://v0.dev/t/NwA031WlFqd
  */
 import { BaseHeader } from "@/components/base-header";
-import { PostCard } from "@/components/post/card";
+import { PostsFeed } from "@/components/feed";
 
 import { Button } from "@/components/ui/button";
-import { api } from "@/trpc/server";
+
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -20,21 +20,9 @@ function FeedPage() {
       </BaseHeader>
 
       <Suspense fallback={"Carregando..."}>
-        <Posts />
+        <PostsFeed />
       </Suspense>
     </>
-  );
-}
-
-async function Posts() {
-  const posts = await api.post.feed.query();
-
-  return (
-    <div className="rounded-lg border border-gray-200">
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-    </div>
   );
 }
 

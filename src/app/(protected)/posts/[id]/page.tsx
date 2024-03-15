@@ -16,8 +16,8 @@ function PostPage({ params }: { params: { id: string } }) {
       <Suspense fallback={"Carregando..."}>
         <Content postId={id} />
       </Suspense>
-      <br></br>
-      <Suspense fallback={"Comentários..."}>
+
+      <Suspense>
         <Comments postId={id} />
       </Suspense>
     </>

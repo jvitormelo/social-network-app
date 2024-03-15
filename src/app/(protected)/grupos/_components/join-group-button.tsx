@@ -3,16 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { api } from "@/trpc/react";
 import { type Group } from "@/types";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export function JoinGroupButton({ group }: { group: Group }) {
-  const router = useRouter();
+  const utils = api.useUtils();
   const { mutate, isLoading } = api.groups.join.useMutation({
     onSuccess() {
       toast.success("Voce entrou no grupo!");
 
-      router.refresh();
+      void utils.groups.listUserGroups.invalidate();
+      void utils.groups.discoverGroups.invalidate();
     },
   });
 
