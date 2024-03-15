@@ -45,6 +45,7 @@ const posts: Post[] = [
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
     imgSrc: "/placeholder.svg",
+    createdAt: new Date().toISOString(),
   },
   {
     id: "2",
@@ -52,6 +53,7 @@ const posts: Post[] = [
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
     imgSrc: "/placeholder.svg",
+    createdAt: new Date().toISOString(),
   },
   {
     id: "3",
@@ -59,6 +61,33 @@ const posts: Post[] = [
     content:
       "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
     imgSrc: "/placeholder.svg",
+    createdAt: new Date().toISOString(),
+  },
+];
+
+const comments = [
+  {
+    id: "1",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    createdAt: new Date().toISOString(),
+    user: {
+      name: "John Doe",
+      id: "1",
+      picture: "/placeholder.svg",
+    },
+  },
+
+  {
+    id: "2",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    createdAt: new Date().toISOString(),
+    user: {
+      name: "Arthur Hao",
+      id: "1",
+      picture: "/placeholder.svg",
+    },
   },
 ];
 
@@ -120,4 +149,10 @@ export async function getPost(postId: string) {
   }
 
   return post;
+}
+
+export async function getComments(postId: string) {
+  await sleep(500);
+
+  return comments;
 }

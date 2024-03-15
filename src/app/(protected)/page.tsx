@@ -3,7 +3,8 @@
  * @see https://v0.dev/t/NwA031WlFqd
  */
 import { BaseHeader } from "@/components/base-header";
-import { PostCard } from "@/components/post-card";
+import { PostCard } from "@/components/post/card";
+
 import { Button } from "@/components/ui/button";
 import { getPosts } from "@/server/mock";
 import { Suspense } from "react";

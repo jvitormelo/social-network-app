@@ -16,4 +16,12 @@ export type Post = {
   user: User;
   content: string;
   imgSrc?: string;
+  createdAt: string;
+};
+
+export type Comment = {
+  id: string;
+  user: User;
+  content: string;
+  createdAt: string;
 };

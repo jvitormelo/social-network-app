@@ -2,6 +2,7 @@ import { type User, type Post } from "@/types";
 import { Avatar } from "../ui/avatar";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { DaysAgo } from "../days-ago";
 
 function Container({
   children,
@@ -17,13 +18,15 @@ function Container({
   );
 }
 
-function Header({ user }: { user: User }) {
+function Header({ user, post }: { user: User; post: Post }) {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <Avatar />
       <div className="flex items-center gap-1">
         <h2 className="text-sm font-medium leading-none">{user.name}</h2>
       </div>
+
+      <DaysAgo time={post.createdAt}></DaysAgo>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { BaseHeader } from "@/components/base-header";
-import { PostCard } from "@/components/post-card";
+import { PostCard } from "@/components/post/card";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -44,7 +45,7 @@ function GroupFeed() {
       </div>
 
       <Suspense fallback={"Carregando..."}>
-        <Posts></Posts>
+        <Posts />
       </Suspense>
     </>
   );

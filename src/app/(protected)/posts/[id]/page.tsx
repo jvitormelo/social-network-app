@@ -1,6 +1,10 @@
 import { BaseHeader } from "@/components/base-header";
-import { PostInfo } from "@/components/post/content";
-import { getPost } from "@/server/mock";
+import { PostComment } from "@/components/post/comment";
+import { PostInfo } from "@/components/post/info";
+import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { getComments, getPost } from "@/server/mock";
 import { Suspense } from "react";
 
 // Ta tudo em SSR, mas sinceramente acho que não precisa
@@ -13,8 +17,9 @@ function PostPage({ params }: { params: { id: string } }) {
       <Suspense fallback={"Carregando..."}>
         <Content postId={id} />
       </Suspense>
+      <br></br>
       <Suspense fallback={"Comentários..."}>
-        <Comments />
+        <Comments postId={id} />
       </Suspense>
     </>
   );
@@ -25,14 +30,32 @@ async function Content({ postId }: { postId: string }) {
 
   return (
     <>
-      <BaseHeader title={<PostInfo.Header user={post.user} />}></BaseHeader>
+      <BaseHeader
+        title={<PostInfo.Header post={post} user={post.user} />}
+      ></BaseHeader>
       <PostInfo.Content post={post} />
     </>
   );
 }
 
-function Comments() {
-  return <div></div>;
+async function Comments({ postId }: { postId: string }) {
+  const comments = await getComments(postId);
+  return (
+    <div className="space-y-4">
+      {comments.map((comment) => (
+        <PostComment key={comment.id} comment={comment}></PostComment>
+      ))}
+
+      <form className="flex space-x-2">
+        <Input
+          className="flex-1 rounded-lg border px-4 py-2"
+          type="text"
+          placeholder="Escreva algo..."
+        />
+        <Button type="submit">Postar</Button>
+      </form>
+    </div>
+  );
 }
 
 export default PostPage;

@@ -1,9 +1,7 @@
-import Image from "next/image";
-import { Avatar } from "./ui/avatar";
-import { Button } from "./ui/button";
-import Link from "next/link";
 import { type Post } from "@/types";
-import { PostInfo } from "./post/content";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { PostInfo } from "./info";
 
 interface Props {
   post: Post;
@@ -12,7 +10,7 @@ interface Props {
 export const PostCard: React.FC<Props> = ({ post }) => {
   return (
     <PostInfo.Container className="border-b">
-      <PostInfo.Header user={post.user} />
+      <PostInfo.Header post={post} user={post.user} />
       <PostInfo.Content post={post} />
       <div className="mx-auto flex items-center gap-4">
         <Link href={`/posts/${post.id}`}>
