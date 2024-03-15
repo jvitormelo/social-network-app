@@ -9,7 +9,7 @@ function GroupsLayout(props: PropsWithChildren) {
     <>
       <BaseHeader title="Grupos">
         <Link href={"/grupos/novo"}>
-          <Button size="lg">Novo Grupo</Button>
+          <Button>Novo Grupo</Button>
         </Link>
       </BaseHeader>
 

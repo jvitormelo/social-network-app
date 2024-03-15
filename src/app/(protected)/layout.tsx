@@ -26,7 +26,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       </div>
       <section className="mx-auto grid w-full max-w-7xl items-start gap-6 px-6 py-6 md:grid-cols-12">
         {/* Include shared UI here e.g. a header or sidebar */}
-        <aside className="left-0 top-24 grid gap-4 md:col-span-3 lg:sticky ">
+        <aside className="left-0 top-24 hidden gap-4 md:col-span-3 md:grid lg:sticky ">
           <div className="flex items-center gap-4">
             <Avatar />
             <div>
