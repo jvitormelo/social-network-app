@@ -53,7 +53,7 @@ const AvatarComponent = (props: React.ComponentProps<typeof AvatarImage>) => {
       <AvatarImage
         src={
           props.src ??
-          "https://cdn.discordapp.com/attachments/820471891051151371/1218258932267614338/image.png?ex=6607030b&is=65f48e0b&hm=a277ecb3e6deacb749c89d7d0fbb86b332198bfcdd075b98013fdb670b7db6a3&"
+          "https://cdn.discordapp.com/attachments/820471891051151371/1217203480767369387/image.png?ex=66032c14&is=65f0b714&hm=21b5abe8bef47850afc27bf73e433de00d8087d98096660d18538ac7003f47cf&"
         }
         {...props}
         className="h-10 w-10"
