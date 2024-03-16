@@ -1,3 +1,9 @@
+# DOC QUE IMPORTA
+
+mudar o src/server/api/routes
+implementa auth (vai ter que se virar, usar next auth ou fazer na mao, e depois botar no tRPC)
+procurar por TODO, deixei alguns
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
