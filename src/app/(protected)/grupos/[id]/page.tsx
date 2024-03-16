@@ -53,7 +53,8 @@ async function Header({ groupId: groupId }: { groupId: string }) {
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem>Editar</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-500">
+            <DropdownMenuItem className="text-red-500">Sair</DropdownMenuItem>
+            <DropdownMenuItem className="text-red-600">
               Excluir
             </DropdownMenuItem>
           </DropdownMenuContent>

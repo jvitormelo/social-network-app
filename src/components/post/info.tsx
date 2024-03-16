@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils";
 import { type Group, type Post, type User } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 import { DaysAgo } from "../days-ago";
 import { Avatar } from "../ui/avatar";
 import { PostDropdownActions } from "./dropdown-actions";
-import Link from "next/link";
-import { Suspense } from "react";
 
 function Container({
   children,
@@ -37,7 +36,7 @@ function Header({
         <div className="flex flex-col justify-start gap-1">
           {group && (
             <Link target="_blank" href={`/grupos/${group.id}`}>
-              <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline dark:text-gray-400">
+              <p className="text-xs font-semibold leading-tight text-gray-500 hover:text-primary hover:underline">
                 {group.name}
               </p>
             </Link>

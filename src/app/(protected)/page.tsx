@@ -10,6 +10,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Suspense } from "react";
 
+export const metadata = {
+  title: "Connect - Feed",
+  description: "Connect - Feed",
+};
+
 function FeedPage() {
   return (
     <>

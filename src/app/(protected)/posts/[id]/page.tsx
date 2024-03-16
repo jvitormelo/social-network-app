@@ -1,5 +1,4 @@
 import { BaseHeader } from "@/components/base-header";
-import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
 import { SkeletonCard } from "@/components/skeleton-card";
 import { Card } from "@/components/ui/card";
