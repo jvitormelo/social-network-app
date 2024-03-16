@@ -9,9 +9,9 @@ const commentInput = z.object({
 });
 
 export const commentRouter = createTRPCRouter({
-  list: protectedProcedure.input(z.string()).query(async () => {
+  list: protectedProcedure.input(z.string()).query(async ({ input }) => {
     await sleep(500);
-    return mockedData.comments;
+    return mockedData.comments.filter((comment) => comment.postId === input);
   }),
 
   create: protectedProcedure.input(commentInput).mutation(({ input }) => {

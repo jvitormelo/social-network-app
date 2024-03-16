@@ -1,4 +1,4 @@
-import { type Group, type Post, type User } from "@/types";
+import { type Comment, type Group, type Post, type User } from "@/types";
 
 const groups: Group[] = [
   {
@@ -84,19 +84,32 @@ const posts: Post[] = [
 
 const userGroups = new Set<string>([groups[0]!.id]);
 
-const comments = [
+const comments: Comment[] = [
   {
     id: "1",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    postId: "1",
+    content: "This is the first comment for the first post.",
     createdAt: new Date().toISOString(),
     user: secondUser,
   },
-
   {
     id: "2",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    postId: "1",
+    content: "This is the second comment for the first post.",
+    createdAt: new Date().toISOString(),
+    user: user,
+  },
+  {
+    id: "3",
+    postId: "2",
+    content: "This is the first comment for the second post.",
+    createdAt: new Date().toISOString(),
+    user: thirdUser,
+  },
+  {
+    id: "4",
+    postId: "2",
+    content: "This is the second comment for the second post.",
     createdAt: new Date().toISOString(),
     user: user,
   },
