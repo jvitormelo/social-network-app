@@ -12,7 +12,9 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/server";
 
 import { EllipsisVertical } from "lucide-react";
+import Link from "next/link";
 import { Suspense } from "react";
+import { GroupPosts } from "../_components/group-posts";
 
 function GroupFeed({ params }: { params: { id: string } }) {
   return (
@@ -32,9 +34,7 @@ function GroupFeed({ params }: { params: { id: string } }) {
         </Tabs>
       </div>
 
-      <Suspense fallback={"Carregando..."}>
-        <Posts groupId={params.id} />
-      </Suspense>
+      <GroupPosts groupId={params.id} />
     </>
   );
 }
@@ -45,7 +45,9 @@ async function Header({ groupId: groupId }: { groupId: string }) {
   return (
     <section className="sticky top-[68px] bg-background">
       <BaseHeader title={group.name}>
-        <Button size={"sm"}>Novo Post</Button>
+        <Link href={`/posts/novo?id=${groupId}`}>
+          <Button>Novo Post</Button>
+        </Link>
         <DropdownMenu>
           <DropdownMenuTrigger>
             <EllipsisVertical />
@@ -59,18 +61,6 @@ async function Header({ groupId: groupId }: { groupId: string }) {
         </DropdownMenu>
       </BaseHeader>
     </section>
-  );
-}
-
-async function Posts({ groupId }: { groupId: string }) {
-  const posts = await api.post.list.query({ groupId });
-
-  return (
-    <div className="rounded-lg border border-gray-200">
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
-    </div>
   );
 }
 

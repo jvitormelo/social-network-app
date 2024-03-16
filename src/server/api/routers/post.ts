@@ -2,6 +2,7 @@ import { sleep } from "@/lib/utils";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { mockedData } from "@/server/data";
 import { type Post } from "@/types";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const postInput = z.object({
@@ -19,7 +20,9 @@ const editInput = z.object({ postId: z.string() }).merge(
 export const postRouter = createTRPCRouter({
   feed: protectedProcedure.query(async () => {
     await sleep(500);
-    return mockedData.posts;
+    return mockedData.posts.sort((a, b) => {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
   }),
   list: protectedProcedure
     .input(
@@ -29,7 +32,13 @@ export const postRouter = createTRPCRouter({
     )
     .query(async ({ input }) => {
       await sleep(500);
-      return mockedData.posts.filter((post) => post.group.id === input.groupId);
+      return mockedData.posts
+        .filter((post) => post.group.id === input.groupId)
+        .sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
     }),
 
   create: protectedProcedure.input(postInput).mutation(({ input }) => {
@@ -52,6 +61,8 @@ export const postRouter = createTRPCRouter({
     };
 
     mockedData.posts.push(newPost);
+
+    revalidatePath(`/grupos/${input.group}`);
 
     return newPost;
   }),
