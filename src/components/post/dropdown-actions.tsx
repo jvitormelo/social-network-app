@@ -1,3 +1,5 @@
+"use client";
+
 import { type Post } from "@/types";
 import {
   DropdownMenu,
@@ -11,6 +13,7 @@ import { api } from "@/trpc/react";
 export const PostDropdownActions = ({ post }: { post: Post }) => {
   const user = api.user.me.useQuery();
   const isOp = user.data?.id === post.user.id;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="ml-auto">

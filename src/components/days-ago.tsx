@@ -8,7 +8,10 @@ export function DaysAgo({ time }: { time: string }) {
   }).format(new Date(time));
 
   return (
-    <span title={fullDate} className="text-xs font-normal text-gray-400">
+    <span
+      title={fullDate}
+      className="text-xs font-normal text-gray-400 dark:text-gray-300"
+    >
       {daysAgo}
     </span>
   );

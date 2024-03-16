@@ -5,6 +5,7 @@ import { DaysAgo } from "../days-ago";
 import { Avatar } from "../ui/avatar";
 import { PostDropdownActions } from "./dropdown-actions";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function Container({
   children,
@@ -31,11 +32,11 @@ function Header({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <Avatar />
+      <Avatar src={user.picture} />
       <div className="flex flex-col justify-start gap-1">
         {group && (
           <Link target="_blank" href={`/grupos/${group.id}`}>
-            <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline">
+            <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline dark:text-gray-400">
               {group.name}
             </p>
           </Link>
@@ -46,7 +47,9 @@ function Header({
         </span>
       </div>
 
-      <PostDropdownActions post={post} />
+      <Suspense>
+        <PostDropdownActions post={post} />
+      </Suspense>
     </div>
   );
 }
@@ -59,7 +62,7 @@ function Content({ post: { content, imgSrc } }: { post: Post }) {
         <div>
           <Image
             alt="Post image"
-            className="mx-auto  items-center"
+            className="mx-auto mb-2 mt-4 items-center"
             height="200"
             src={imgSrc}
             width="400"

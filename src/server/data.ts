@@ -36,19 +36,20 @@ const groups: Group[] = [
 const user: User = {
   id: "1",
   name: "Sanford Marshall Sampietri",
-  picture: "/placeholder.svg",
+  picture:
+    "https://cdn.discordapp.com/attachments/820471891051151371/1217203480767369387/image.png?ex=66032c14&is=65f0b714&hm=21b5abe8bef47850afc27bf73e433de00d8087d98096660d18538ac7003f47cf&",
 };
 
 const secondUser: User = {
   id: "2",
   name: "John Doe",
-  picture: "/placeholder.svg",
+  picture: "https://xsgames.co/randomusers/avatar.php?g=male",
 };
 
 const thirdUser: User = {
   id: "3",
   name: "Jane Doe",
-  picture: "/placeholder.svg",
+  picture: "https://xsgames.co/randomusers/avatar.php?g=female",
 };
 
 const posts: Post[] = [
