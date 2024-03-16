@@ -21,6 +21,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import Link from "next/link";
 
 export const PostDropdownActions = ({ post }: { post: Post }) => {
   const user = api.user.me.useQuery();
@@ -47,7 +48,9 @@ export const PostDropdownActions = ({ post }: { post: Post }) => {
         <DropdownMenuContent>
           {isOp ? (
             <>
-              <DropdownMenuItem>Editar</DropdownMenuItem>
+              <Link passHref href={`/posts/${post.id}/editar`}>
+                <DropdownMenuItem>Editar</DropdownMenuItem>
+              </Link>
               <DropdownMenuItem
                 onClick={() => setIsAlertDialogOpen(true)}
                 className="text-red-500"

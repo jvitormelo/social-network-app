@@ -59,7 +59,20 @@ export const postRouter = createTRPCRouter({
     return newPost;
   }),
 
-  edit: protectedProcedure.input(editInput).mutation(() => ({})),
+  edit: protectedProcedure.input(editInput).mutation(async ({ input }) => {
+    await sleep(500);
+    mockedData.posts = mockedData.posts.map((post) => {
+      if (post.id === input.postId) {
+        return {
+          ...post,
+          content: input.content,
+        };
+      }
+      return post;
+    });
+
+    return mockedData.posts.find((post) => post.id === input.postId)!;
+  }),
 
   find: protectedProcedure.input(z.string()).query(async ({ input }) => {
     const post = mockedData.posts.find((post) => post.id === input);

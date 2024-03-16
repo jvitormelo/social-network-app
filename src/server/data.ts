@@ -82,7 +82,7 @@ const posts: Post[] = [
   },
 ];
 
-const userGroups = new Set<string>([groups[0]!.id]);
+const userGroups = new Set<string>([groups[2]!.id]);
 
 const comments: Comment[] = [
   {
