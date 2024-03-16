@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils";
-import { type Post, type User } from "@/types";
+import { type Group, type Post, type User } from "@/types";
 import Image from "next/image";
 import { DaysAgo } from "../days-ago";
 import { Avatar } from "../ui/avatar";
 import { PostDropdownActions } from "./dropdown-actions";
+import Link from "next/link";
 
 function Container({
   children,
@@ -19,15 +20,31 @@ function Container({
   );
 }
 
-function Header({ user, post }: { user: User; post: Post }) {
+function Header({
+  user,
+  post,
+  group,
+}: {
+  user: User;
+  post: Post;
+  group?: Group;
+}) {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Avatar />
-      <div className="flex items-center gap-1">
-        <h2 className="text-sm font-medium leading-none">{user.name}</h2>
+      <div className="flex flex-col justify-start gap-1">
+        {group && (
+          <Link target="_blank" href={`/grupos/${group.id}`}>
+            <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline">
+              {group.name}
+            </p>
+          </Link>
+        )}
+        <span className="flex items-center gap-2">
+          <h2 className="text-sm font-medium leading-none">{user.name}</h2>
+          <DaysAgo time={post.createdAt}></DaysAgo>
+        </span>
       </div>
-
-      <DaysAgo time={post.createdAt}></DaysAgo>
 
       <PostDropdownActions post={post} />
     </div>

@@ -16,7 +16,9 @@ export function GroupPosts({ groupId }: { groupId: string }) {
           <SkeletonCard />
         </>
       )}
-      {posts.data?.map((post) => <PostCard key={post.id} post={post} />)}
+      {posts.data?.map((post) => (
+        <PostCard hideGroup key={post.id} post={post} />
+      ))}
     </div>
   );
 }

@@ -5,12 +5,17 @@ import { PostInfo } from "./info";
 
 interface Props {
   post: Post;
+  hideGroup?: boolean;
 }
 
-export const PostCard: React.FC<Props> = ({ post }) => {
+export const PostCard: React.FC<Props> = ({ post, hideGroup }) => {
   return (
     <PostInfo.Container className="border-b">
-      <PostInfo.Header post={post} user={post.user} />
+      <PostInfo.Header
+        post={post}
+        group={hideGroup ? undefined : post.group}
+        user={post.user}
+      />
       <PostInfo.Content post={post} />
       <div className="mx-auto flex items-center gap-4">
         <Link href={`/posts/${post.id}`}>

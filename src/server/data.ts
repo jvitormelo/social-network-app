@@ -57,7 +57,7 @@ const posts: Post[] = [
     group: groups[0]!,
     user: secondUser,
     content:
-      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+      "Spotted Jupiter's moons through my telescope last night! 🌌🔭 #Astronomy",
     imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
@@ -66,7 +66,7 @@ const posts: Post[] = [
     user: thirdUser,
     group: groups[1]!,
     content:
-      "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
+      "Baked a French Baguette following Julia Child's recipe. It was a hit! 🥖 #CulinaryMasters",
     imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
@@ -75,7 +75,7 @@ const posts: Post[] = [
     user,
     group: groups[2]!,
     content:
-      "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
+      "Just solved a complex mathematical problem. Feels good! 🧮 #Mathematics",
     imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
