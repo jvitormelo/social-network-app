@@ -48,7 +48,7 @@ export const postRouter = createTRPCRouter({
       content: input.content,
       group: group!,
       user: mockedData.user,
-      imgSrc: input.file ?? "",
+      imgSrc: "https://picsum.photos/600/400",
       createdAt: new Date().toISOString(),
     };
 

@@ -58,7 +58,7 @@ const posts: Post[] = [
     user: secondUser,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-    imgSrc: "/placeholder.svg",
+    imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
   {
@@ -67,7 +67,7 @@ const posts: Post[] = [
     group: groups[1]!,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
-    imgSrc: "/placeholder.svg",
+    imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
   {
@@ -76,12 +76,12 @@ const posts: Post[] = [
     group: groups[2]!,
     content:
       "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
-    imgSrc: "/placeholder.svg",
+    imgSrc: "https://picsum.photos/400/300",
     createdAt: new Date().toISOString(),
   },
 ];
 
-const userGroups = new Set<string>();
+const userGroups = new Set<string>([groups[0]!.id]);
 
 const comments = [
   {
