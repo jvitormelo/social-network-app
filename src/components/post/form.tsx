@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -15,6 +14,7 @@ import { api } from "@/trpc/react";
 import { type Post } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import { FileUploader } from "../file-uploader";
 
 type Props = {
   initialData?: Post;
@@ -63,7 +63,11 @@ export function PostForm({ initialData }: Props) {
         const formData = new FormData(form);
         const group = formData.get("group") as string;
         const content = formData.get("content") as string;
-        // TODO handle img
+
+        const file = formData.get("img") as File;
+        const hasFile = file instanceof File && file?.size > 0;
+
+        console.log({ hasFile });
 
         if (initialId) {
           updatePostMutation.mutate({
@@ -74,7 +78,6 @@ export function PostForm({ initialData }: Props) {
           createPostMutation.mutate({
             group: group || searchGroupId!,
             content,
-            file: "",
           });
         }
       }}
@@ -111,9 +114,9 @@ export function PostForm({ initialData }: Props) {
         />
       </div>
 
-      <div>
-        <Label htmlFor="img">Imagem</Label>
-        <Input id="img" name="img" type="file" accept="image/*" />
+      <div className="w-1/2">
+        <Label>Imagem</Label>
+        <FileUploader img={initialData?.imgSrc} name="img" />
       </div>
 
       <Button isLoading={isLoading} type="submit" className="w-full">

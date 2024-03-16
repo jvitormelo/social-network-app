@@ -57,13 +57,15 @@ function Content({ post: { content, imgSrc } }: { post: Post }) {
     <div className="flex flex-col">
       <p className="text-base leading-[1.6]">{content}</p>
       {imgSrc && (
-        <div>
+        <div className="relative mx-auto my-3 h-72 w-full rounded-lg lg:w-4/5 ">
           <Image
+            fill
             alt="Post image"
-            className="mx-auto mb-2 mt-4 items-center"
-            height="200"
+            objectFit="contain"
+            objectPosition="center"
+            className="rounded-lg"
             src={imgSrc}
-            width="400"
+            sizes="30vw, (max-width: 640px) 80vw"
           />
         </div>
       )}

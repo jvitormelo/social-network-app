@@ -35,9 +35,9 @@ const groups: Group[] = [
 
 const user: User = {
   id: "1",
-  name: "Sanford Marshall Sampietri",
+  name: "Shadow ",
   picture:
-    "https://cdn.discordapp.com/attachments/820471891051151371/1217203480767369387/image.png?ex=66032c14&is=65f0b714&hm=21b5abe8bef47850afc27bf73e433de00d8087d98096660d18538ac7003f47cf&",
+    "https://cdn.discordapp.com/attachments/1189249844833955911/1218423302197084160/the-eminence-in-shadow2000x1270.png?ex=66079c20&is=65f52720&hm=2799f997b27b70809d016a134b5cd12b65934eea5c4c31fe48d1187c0879ea3e&",
 };
 
 const secondUser: User = {

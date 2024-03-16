@@ -7,6 +7,9 @@ import { type Group } from "@/types";
 const groupInput = z.object({
   name: z.string(),
   picture: z.string(),
+  description: z.string(),
+  theme: z.string(),
+  tags: z.array(z.string()),
 });
 
 export const groupRouter = createTRPCRouter({

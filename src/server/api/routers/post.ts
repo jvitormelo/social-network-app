@@ -8,7 +8,7 @@ import { z } from "zod";
 const postInput = z.object({
   content: z.string(),
   group: z.string(),
-  file: z.string().optional(),
+  picture: z.string().optional(),
 });
 
 const editInput = z.object({ postId: z.string() }).merge(
