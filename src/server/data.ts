@@ -1,52 +1,61 @@
 import { type Group, type Post, type User } from "@/types";
 
-const group = {
-  id: "991",
-  name: "JASONNN",
-  picture: "/placeholder.svg",
-  members: 200,
-};
-
-const discoverGroups: Group[] = [
+const groups: Group[] = [
   {
     id: "1",
-    name: "Kekw",
+    name: "Astronomy Enthusiasts",
     picture: "/placeholder.svg",
-    members: 200,
+    members: 1200,
   },
   {
     id: "2",
-    name: "Hello Kitty",
+    name: "Culinary Masters",
     picture: "/placeholder.svg",
-    members: 200,
+    members: 800,
   },
   {
     id: "3",
-    name: "Matematicos da USP",
+    name: "USP Mathematicians",
     picture: "/placeholder.svg",
-    members: 200,
+    members: 500,
   },
   {
     id: "4",
-    name: "Eu amo fisica",
+    name: "Physics Lovers",
     picture: "/placeholder.svg",
-    members: 200,
+    members: 700,
+  },
+  {
+    id: "5",
+    name: "Jason's Fan Club",
+    picture: "/placeholder.svg",
+    members: 300,
   },
 ];
 
-const userGroups: Group[] = [group];
-
 const user: User = {
   id: "1",
-  name: "Tracy Howard",
+  name: "Sanford Marshall Sampietri",
+  picture: "/placeholder.svg",
+};
+
+const secondUser: User = {
+  id: "2",
+  name: "John Doe",
+  picture: "/placeholder.svg",
+};
+
+const thirdUser: User = {
+  id: "3",
+  name: "Jane Doe",
   picture: "/placeholder.svg",
 };
 
 const posts: Post[] = [
   {
     id: "1",
-    group: group,
-    user,
+    group: groups[0]!,
+    user: secondUser,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
     imgSrc: "/placeholder.svg",
@@ -54,8 +63,8 @@ const posts: Post[] = [
   },
   {
     id: "2",
-    user,
-    group: group,
+    user: thirdUser,
+    group: groups[1]!,
     content:
       "Just finished reading the latest book by @author123. What a journey! Highly recommended for all the book lovers out there. 📚❤️",
     imgSrc: "/placeholder.svg",
@@ -64,7 +73,7 @@ const posts: Post[] = [
   {
     id: "3",
     user,
-    group: group,
+    group: groups[2]!,
     content:
       "Just wanted to share this amazing recipe I tried last night. It's a delicious spaghetti aglio e olio. 😋🍝",
     imgSrc: "/placeholder.svg",
@@ -72,17 +81,15 @@ const posts: Post[] = [
   },
 ];
 
+const userGroups = new Set<string>();
+
 const comments = [
   {
     id: "1",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     createdAt: new Date().toISOString(),
-    user: {
-      name: "John Doe",
-      id: "1",
-      picture: "/placeholder.svg",
-    },
+    user: secondUser,
   },
 
   {
@@ -90,18 +97,14 @@ const comments = [
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     createdAt: new Date().toISOString(),
-    user: {
-      name: "Arthur Hao",
-      id: "1",
-      picture: "/placeholder.svg",
-    },
+    user: user,
   },
 ];
 
 export const mockedData = {
-  discoverGroups,
-  userGroups,
+  groups,
   user,
   posts,
   comments,
+  userGroups,
 };

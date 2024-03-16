@@ -1,15 +1,9 @@
 import { cn } from "@/lib/utils";
 import { type Post, type User } from "@/types";
-import { EllipsisVertical } from "lucide-react";
 import Image from "next/image";
 import { DaysAgo } from "../days-ago";
 import { Avatar } from "../ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+import { PostDropdownActions } from "./dropdown-actions";
 
 function Container({
   children,
@@ -35,16 +29,7 @@ function Header({ user, post }: { user: User; post: Post }) {
 
       <DaysAgo time={post.createdAt}></DaysAgo>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger className="ml-auto">
-          <EllipsisVertical className="h-4 w-4" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem>Editar</DropdownMenuItem>
-          <DropdownMenuItem className="text-red-500">Excluir</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      <button></button>
+      <PostDropdownActions post={post} />
     </div>
   );
 }

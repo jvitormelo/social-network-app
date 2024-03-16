@@ -2,6 +2,8 @@ import { SearchCommand } from "@/components/search-command";
 import { ModeToggle } from "@/components/theme-toggle";
 import { Avatar } from "@/components/ui/avatar";
 import { UserGroupColapse } from "@/components/user-groups-collapse";
+import { getServerAuthSession } from "@/server/auth";
+import { api } from "@/trpc/server";
 import { Compass, Group } from "lucide-react";
 import Link from "next/link";
 
@@ -31,13 +33,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
       <section className="mx-auto grid w-full max-w-7xl items-start gap-6 px-6 py-6 md:grid-cols-12">
         {/* Include shared UI here e.g. a header or sidebar */}
         <aside className="left-0 top-24 hidden gap-4 md:col-span-3 md:grid lg:sticky ">
-          <div className="flex items-center gap-4">
-            <Avatar />
-            <div>
-              <h1 className="text-2xl font-bold leading-none">Tracy Howard</h1>
-              <p className="text-sm text-gray-500">@tracy123</p>
-            </div>
-          </div>
+          <UserInfo />
           <nav className="grid gap-1.5">
             {navLinks.map((link) =>
               "label" in link ? (
@@ -64,6 +60,19 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 }
 
 export default AppLayout;
+
+async function UserInfo() {
+  const user = await api.user.me.query();
+
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar />
+      <div>
+        <h1 className="text-2xl font-bold  leading-none">{user.name}</h1>
+      </div>
+    </div>
+  );
+}
 
 function UserIcon(props: SvgProps) {
   return (

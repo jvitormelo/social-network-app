@@ -11,6 +11,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import { getServerAuthSession } from "@/server/auth";
+import { mockedData } from "../data";
 
 /**
  * 1. CONTEXT
@@ -87,6 +88,8 @@ export const publicProcedure = t.procedure;
  */
 export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
   // TODO > IMPLEMENT AUTHENTICATION
+  // Aqui tu pode talvez ja usar o user da session, ou usar o ME do userRouter
+
   // if (!ctx.session || !ctx.session.user) {
   //   throw new TRPCError({ code: "UNAUTHORIZED" });
   // }
@@ -96,9 +99,9 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
       session: {
         ...ctx.session,
         user: {
-          id: "1",
-          name: "John Doe",
-          picture: "/placeholder.svg",
+          id: mockedData.user.id,
+          name: mockedData.user.name,
+          picture: mockedData.user.picture,
         },
       },
     },

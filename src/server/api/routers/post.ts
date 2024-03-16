@@ -42,20 +42,12 @@ export const postRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure.input(postInput).mutation(({ input }) => {
+    const group = mockedData.groups.find((group) => group.id === input.group);
     const newPost: Post = {
       id: Math.random().toString(),
       content: input.content,
-      group: {
-        id: input.group,
-        name: "JASONNN",
-        picture: "/placeholder.svg",
-        members: 200,
-      },
-      user: {
-        id: "1",
-        name: "Tracy Howard",
-        picture: "/placeholder.svg",
-      },
+      group: group!,
+      user: mockedData.user,
       imgSrc: input.file ?? "",
       createdAt: new Date().toISOString(),
     };

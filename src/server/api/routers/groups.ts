@@ -9,7 +9,7 @@ const groupInput = z.object({
   picture: z.string(),
 });
 
-export const groupsRouter = createTRPCRouter({
+export const groupRouter = createTRPCRouter({
   create: protectedProcedure.input(groupInput).mutation(({ input }) => {
     const group: Group = {
       name: input.name,
@@ -17,21 +17,26 @@ export const groupsRouter = createTRPCRouter({
       members: 1,
       picture: input.picture,
     };
-    mockedData.userGroups.push(group);
+    mockedData.groups.push(group);
+    mockedData.userGroups.add(group.id);
+    // add ADMIN Role to user
     return group;
   }),
   listUserGroups: protectedProcedure.query(async () => {
     await sleep(500);
-    return mockedData.userGroups;
+    return mockedData.groups.filter((group) =>
+      mockedData.userGroups.has(group.id),
+    );
   }),
   discoverGroups: protectedProcedure.query(async () => {
     await sleep(500);
-    return mockedData.discoverGroups;
+    return mockedData.groups.filter(
+      (group) => !mockedData.userGroups.has(group.id),
+    );
   }),
   find: protectedProcedure.input(z.string()).query(async ({ input }) => {
-    const group = [...mockedData.userGroups, ...mockedData.discoverGroups].find(
-      (group) => group.id === input,
-    );
+    const group = mockedData.groups.find((group) => group.id === input);
+
     if (!group) {
       throw new Error("Group not found");
     }
@@ -39,15 +44,7 @@ export const groupsRouter = createTRPCRouter({
   }),
   join: protectedProcedure.input(z.string()).mutation(async ({ input }) => {
     await sleep(1000);
-    const foundIndex = mockedData.discoverGroups.findIndex(
-      (group) => group.id === input,
-    );
 
-    if (foundIndex === -1) {
-      throw new Error("Group not found");
-    }
-
-    const splicedGroup = mockedData.discoverGroups.splice(foundIndex, 1);
-    mockedData.userGroups.push(...splicedGroup);
+    mockedData.userGroups.add(input);
   }),
 });
