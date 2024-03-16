@@ -4,6 +4,7 @@ import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 
 import { cn } from "@/lib/utils";
+import { api } from "@/trpc/react";
 
 const AvatarContext = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
@@ -51,10 +52,7 @@ const AvatarComponent = (props: React.ComponentProps<typeof AvatarImage>) => {
   return (
     <AvatarContext>
       <AvatarImage
-        src={
-          props.src ??
-          "https://cdn.discordapp.com/attachments/820471891051151371/1217203480767369387/image.png?ex=66032c14&is=65f0b714&hm=21b5abe8bef47850afc27bf73e433de00d8087d98096660d18538ac7003f47cf&"
-        }
+        src={props.src ?? "placeholder.svg"}
         {...props}
         className="h-10 w-10"
       />
@@ -63,4 +61,9 @@ const AvatarComponent = (props: React.ComponentProps<typeof AvatarImage>) => {
   );
 };
 
-export { AvatarComponent as Avatar };
+const UserAvatar = (props: React.ComponentProps<typeof AvatarComponent>) => {
+  const user = api.user.me.useQuery();
+  return <AvatarComponent src={user.data?.picture} {...props} />;
+};
+
+export { AvatarComponent as Avatar, UserAvatar };

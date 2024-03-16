@@ -1,6 +1,6 @@
 import { SearchCommand } from "@/components/search-command";
 import { ModeToggle } from "@/components/theme-toggle";
-import { Avatar } from "@/components/ui/avatar";
+import { Avatar, UserAvatar } from "@/components/ui/avatar";
 import { UserGroupColapse } from "@/components/user-groups-collapse";
 import { UserInfo } from "@/components/user-info";
 import { Compass, Group, LucideHome, UserIcon } from "lucide-react";
@@ -26,7 +26,7 @@ function AppLayout({ children }: { children: React.ReactNode }) {
 
           <div className="flex gap-4">
             <ModeToggle />
-            <Avatar />
+            <UserAvatar />
           </div>
         </header>
       </div>
