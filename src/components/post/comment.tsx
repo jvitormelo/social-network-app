@@ -7,7 +7,7 @@ type Props = { comment: Comment };
 export const PostComment = ({ comment }: Props) => {
   return (
     <div className="flex space-x-2">
-      <Avatar />
+      <Avatar src={comment.user.picture} />
       <div className="flex-1 rounded-lg border px-3 py-2 leading-relaxed sm:px-6 sm:py-4">
         <strong>{comment.user.name}</strong>{" "}
         <DaysAgo time={comment.createdAt} />

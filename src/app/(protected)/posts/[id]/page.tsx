@@ -2,6 +2,7 @@ import { BaseHeader } from "@/components/base-header";
 import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/trpc/server";
 import { Suspense } from "react";
@@ -12,7 +13,7 @@ function PostPage({ params }: { params: { id: string } }) {
   const id = params.id;
 
   return (
-    <>
+    <Card className="flex flex-col gap-6 p-6">
       <Suspense fallback={"Carregando..."}>
         <Content postId={id} />
       </Suspense>
@@ -20,7 +21,7 @@ function PostPage({ params }: { params: { id: string } }) {
       <Suspense>
         <Comments postId={id} />
       </Suspense>
-    </>
+    </Card>
   );
 }
 
@@ -29,7 +30,11 @@ async function Content({ postId }: { postId: string }) {
 
   return (
     <>
-      <BaseHeader title={<PostInfo.Header post={post} user={post.user} />} />
+      <BaseHeader
+        title={
+          <PostInfo.Header group={post.group} post={post} user={post.user} />
+        }
+      />
       <PostInfo.Content post={post} />
     </>
   );

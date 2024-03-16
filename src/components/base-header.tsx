@@ -9,8 +9,8 @@ export function BaseHeader(
   },
 ) {
   return (
-    <div className="flex items-center gap-4">
-      <h1 className="flex items-center gap-2 text-3xl font-bold">
+    <div className="flex w-full items-center gap-4">
+      <h1 className="flex w-full items-center gap-2 text-3xl font-bold">
         {!props.hideBack && <BackIcon fallback={props.backFallback} />}
         {props.title}
       </h1>

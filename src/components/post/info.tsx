@@ -31,25 +31,24 @@ function Header({
   group?: Group;
 }) {
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <Avatar src={user.picture} />
-      <div className="flex flex-col justify-start gap-1">
-        {group && (
-          <Link target="_blank" href={`/grupos/${group.id}`}>
-            <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline dark:text-gray-400">
-              {group.name}
-            </p>
-          </Link>
-        )}
-        <span className="flex items-center gap-2">
-          <h2 className="text-sm font-medium leading-none">{user.name}</h2>
-          <DaysAgo time={post.createdAt}></DaysAgo>
-        </span>
+    <div className="flex w-full items-center justify-between">
+      <div className="flex flex-wrap items-center gap-2">
+        <Avatar src={user.picture} />
+        <div className="flex flex-col justify-start gap-1">
+          {group && (
+            <Link target="_blank" href={`/grupos/${group.id}`}>
+              <p className="text-xs font-semibold leading-tight text-gray-600 hover:text-blue-600 hover:underline dark:text-gray-400">
+                {group.name}
+              </p>
+            </Link>
+          )}
+          <span className="flex items-center gap-2">
+            <h2 className="text-sm font-medium leading-none">{user.name}</h2>
+            <DaysAgo time={post.createdAt}></DaysAgo>
+          </span>
+        </div>
       </div>
-
-      <Suspense>
-        <PostDropdownActions post={post} />
-      </Suspense>
+      <PostDropdownActions post={post} />
     </div>
   );
 }
