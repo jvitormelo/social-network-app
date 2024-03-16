@@ -1,6 +1,7 @@
 import { BaseHeader } from "@/components/base-header";
 import { PostComment } from "@/components/post/comment";
 import { PostInfo } from "@/components/post/info";
+import { SkeletonCard } from "@/components/skeleton-card";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,7 +15,7 @@ function PostPage({ params }: { params: { id: string } }) {
 
   return (
     <Card className="flex flex-col gap-6 p-6">
-      <Suspense fallback={"Carregando..."}>
+      <Suspense fallback={<SkeletonCard />}>
         <Content postId={id} />
       </Suspense>
 
@@ -46,7 +47,7 @@ async function Comments({ postId }: { postId: string }) {
   return (
     <div className="space-y-4">
       {comments.map((comment) => (
-        <PostComment key={comment.id} comment={comment}></PostComment>
+        <PostComment key={comment.id} comment={comment} />
       ))}
 
       <form className="flex space-x-2">
