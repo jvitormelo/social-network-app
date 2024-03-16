@@ -8,7 +8,7 @@ import { useState } from "react";
 export function UserGroupColapse() {
   const [isOpen, setIsOpen] = useState(true);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col border-t pt-2">
       <button
         onClick={() => {
           setIsOpen(!isOpen);

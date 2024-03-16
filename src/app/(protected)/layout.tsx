@@ -1,6 +1,6 @@
 import { SearchCommand } from "@/components/search-command";
 import { ModeToggle } from "@/components/theme-toggle";
-import { Avatar, UserAvatar } from "@/components/ui/avatar";
+import { UserAvatar } from "@/components/ui/avatar";
 import { UserGroupColapse } from "@/components/user-groups-collapse";
 import { UserInfo } from "@/components/user-info";
 import { Compass, Group, LucideHome, UserIcon } from "lucide-react";
