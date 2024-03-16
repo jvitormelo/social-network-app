@@ -49,7 +49,6 @@ export function PostForm({ initialData }: Props) {
         const formData = new FormData(form);
         const group = formData.get("group") as string;
         const content = formData.get("content") as string;
-        console.log({ group, content });
         // TODO handle img
 
         createPostMutation.mutate({

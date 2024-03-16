@@ -1,5 +1,4 @@
 import { BaseHeader } from "@/components/base-header";
-import { PostCard } from "@/components/post/card";
 
 import { Button } from "@/components/ui/button";
 import {

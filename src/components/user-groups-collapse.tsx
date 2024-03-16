@@ -10,7 +10,7 @@ export function UserGroupColapse() {
   return (
     <div className="flex flex-col">
       <button
-        onClick={(e) => {
+        onClick={() => {
           setIsOpen(!isOpen);
         }}
         className="flex items-center gap-2 rounded-md p-3 text-sm font-medium leading-none hover:bg-gray-100 dark:hover:bg-gray-800"
